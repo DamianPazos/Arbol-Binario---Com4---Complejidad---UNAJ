@@ -1,0 +1,11 @@
+# Ignora la solucion
+*.sln
+
+# Ignora el proyecto
+*.csproj
+
+# Ignora carpetas
+**obj
+**bin
+**Properties
+**.vs

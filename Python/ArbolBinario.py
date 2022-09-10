@@ -1,4 +1,4 @@
-import Cola
+from Cola import *
 
 class ArbolBinario:
     
@@ -50,26 +50,53 @@ class ArbolBinario:
             self.__hijoDer.postorden()
         print(self.__raiz)
         
+#    def porNiveles(self):
+#        cola = Cola()
+#        arbolTemporal = None
+#        cola.encolar(self)
+#        while not cola.esVacia():
+#            arbolTemporal = cola.desencolar()
+#            print(arbolTemporal.get_dato())
+#            if self.__hijoIzq != None:
+#               cola.encolar(self.__hijoIzq)
+#            if self.__hijoDer != None:
+#                cola.encolar(self.__hijoDer)
+                
     def porNiveles(self):
-        cola = Cola()
-        cola.encolar(self.__raiz)
-        while not cola.esVacia():
-            print(cola.desncolar())
+        cola = []
+        cola.append(self)
+        while len(cola) != 0:
+            arbolTemp = cola.pop(0)
+            print(arbolTemp.get_dato())
             if self.__hijoIzq != None:
-               cola.encolar(self.__hijoIzq)
+                cola.append(self.__hijoIzq)
             if self.__hijoDer != None:
-                cola.encolar(self.__hijoDer)
-        
+                cola.append(self.__hijoDer)
+    
+    def contarHojas(self):
+        if self.__hijoIzq != None and self.__hijoDer != None:
+            return self.__hijoIzq.contarHojas() + self.__hijoDer.contarHojas()
+        elif self.__hijoIzq != None:
+            return self.__hijoIzq.contarHojas()
+        elif self.__hijoDer != None:
+            return self.__hijoDer.contarHojas()
+        else:
+            return 1   
             
     
+                
+arbol = ArbolBinario(1)
+nodo2 = ArbolBinario(2)
+nodo3 = ArbolBinario(3)
+arbol.agregarHijoIzq(nodo2)
+arbol.agregarHijoDer(nodo3)
+nodo4 = ArbolBinario(4)
+nodo5 = ArbolBinario(5)
+nodo2.agregarHijoIzq(nodo4)
+nodo2.agregarHijoDer(nodo5)
+nodo6 = ArbolBinario(6)
+nodo7 = ArbolBinario(7)
+nodo3.agregarHijoIzq(nodo6)
+nodo3.agregarHijoDer(nodo7)
 
-        
-            
-        
-arbol1 = ArbolBinario(1)
-arbol2 = ArbolBinario(2)
-arbol3 = ArbolBinario(3)
-arbol4 = ArbolBinario(4)
-arbol5 = ArbolBinario(5)
-
-print(arbol1.get_dato())
+print(arbol.contarHojas())
