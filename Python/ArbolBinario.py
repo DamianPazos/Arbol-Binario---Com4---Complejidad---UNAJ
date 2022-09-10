@@ -68,10 +68,10 @@ class ArbolBinario:
         while len(cola) != 0:
             arbolTemp = cola.pop(0)
             print(arbolTemp.get_dato())
-            if self.__hijoIzq != None:
-                cola.append(self.__hijoIzq)
-            if self.__hijoDer != None:
-                cola.append(self.__hijoDer)
+            if arbolTemp.get_HijoIzq() != None:
+                cola.append(arbolTemp.get_HijoIzq())
+            if arbolTemp.get_HijoDer() != None:
+                cola.append(arbolTemp.get_HijoDer())
     
     def contarHojas(self):
         if self.__hijoIzq != None and self.__hijoDer != None:
@@ -99,4 +99,4 @@ nodo7 = ArbolBinario(7)
 nodo3.agregarHijoIzq(nodo6)
 nodo3.agregarHijoDer(nodo7)
 
-print(arbol.contarHojas())
+print(arbol.porNiveles())
